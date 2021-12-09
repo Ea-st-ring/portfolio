@@ -1,0 +1,64 @@
+:root{
+    --white-color:rgba(255, 255, 255, 0.952);
+    --black-color:rgba(0, 0, 0, 0.932);
+    --grey-color:grey;
+    --whitegrey-color:rgb(179, 179, 179);
+
+    --font-small:8px;
+    --font-big:24px;
+    --font-medium:18px;
+
+    --littlespace:6px;
+    --mediumspace:15px;
+    --largespace:24px;
+}
+
+a{
+    text-decoration: none;
+}
+
+body {
+    margin:0;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
+
+}
+
+#navbar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color:var(--grey-color);
+    color: var(--white-color);
+    justify-content: space-between;
+}
+
+.navbar__icon{
+    margin-right: var(--littlespace);
+    margin-left: var(--mediumspace);
+    font-size: var(--font-medium);
+}
+
+.navbar__name{
+    font-size: var(--font-big);
+    
+}
+
+#navbar a{
+    color: var(--white-color);
+    padding:var(--mediumspace) var(--littlespace);
+    font-size: var(--font-medium);
+}
+
+#navbar ul{
+    display: flex;
+    align-items: flex-end;
+    margin-right: var(--mediumspace);
+}
+
+
+
+.navbar__menu > a{
+    margin:var(--littlespace) var(--largespace);
+}
+
