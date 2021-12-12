@@ -9,6 +9,7 @@
     --color-grey: #616161;
     --color-light-grey: #7c7979;
     --color-blue: #73aace;
+    --color-dark-blue:#4263a1;
     --color-yellow: #fff7d1;
     --color-orange: #feb546;
     --color-black: #000000;
@@ -25,7 +26,8 @@
     --weight-semi-bold: 600;
     --weight-regular: 400;
     
-
+    /* Animation */
+    --animation-duration:300ms;
 
     /* size */
     --size-border-radius: 4px;
@@ -70,9 +72,12 @@ a{
 }
 
 ul{
-    padding-left: 0;
+    padding-left: 0;    
 }
 
+li {
+    list-style: none;
+}
 button {
     background-color: transparent;
     cursor:pointer;
@@ -92,7 +97,7 @@ body {
 #navbar{
     display: flex;
     justify-content: space-between;
-    background-color: var(--color-pink);
+    background-color: var(--color-dark-blue);
     align-items: center;
     color: var(--color-white);
     padding: 16px;
@@ -153,4 +158,149 @@ body {
     border: 2px solid var(--color-white);
     border-radius: var(--size-border-radius);
     color: var(--color-white);
+}
+
+
+
+/* Section Common */
+.section{
+    padding:50px;
+    text-align: center;
+    
+    margin: auto;
+}
+
+.section__container{
+    max-width: 1200px;
+}
+
+/* About */
+
+.about__major{
+    display: flex;
+    justify-content: space-between;
+    margin: 80px 0;
+}
+
+.major{
+    max-width:240.5px;
+}
+
+.major__icon{
+    width: 170px;
+    height:170px;
+    font-size: 70px;
+    line-height: 170px;
+    margin: auto;
+    border: 1px solid var(--color-blue);
+    border-radius: 50%;
+    color: var(--color-blue);
+    margin-bottom: 16px;
+}
+
+.major__icon:hover i{
+    color: var(--color-pink);
+    transform: rotate(-30deg) scale(1.1);
+}
+
+.major__icon i{
+    transition: all var(--animation-duration) ease;
+}
+
+.major__title,
+.major__description{
+    color: var(--color-dark-grey);
+    
+}
+
+.major__description{
+    font-size: var(--font-small);
+
+}
+
+.job{
+    display: flex;
+    align-items: center;
+}
+
+.job i{
+    font-size: 24px;
+    color: var(--color-blue);
+}
+
+.job__description{
+    margin: 0 16px;
+    text-align: left;
+}
+
+.job__name, .job__period{
+    color:var(--color-light-grey);
+}
+
+.job__name{
+    font-size: var(--font-small);
+}
+
+.job__period{
+    font-size: var(--font-micro);
+}
+
+
+#skills{
+    background-color: var(--color-yellow);
+    
+}
+
+.skillset{
+    display: flex;
+    background-color: var(--color-light-grey);
+    color: var(--color-light-white);
+    margin: 20px 0;
+}
+
+.skill{
+    margin-bottom: 32px;
+}
+
+.skillset__left{
+flex-basis: 60%;
+background-color: var(--color-dark-grey);
+padding: 20px 40px;
+}
+
+.skill__description{
+display: flex;
+justify-content: space-between;
+}
+
+.skillset__right{
+flex-basis: 40%;
+}
+
+.tools{
+    background-color: var(--color-grey);
+    
+}
+
+.skillset__title{
+    margin-top: 0;
+    color: var(--color-white);
+}
+
+.skill__bar{
+    width: 100%;
+    height: 3px;
+    background-color:var(--color-grey);
+}
+
+.skill__value{
+    width: 70%;
+    height: 3px;
+    background-color: var(--color-orange);
+}
+
+
+.tools,
+.etc{
+    padding: 20px;
 }
