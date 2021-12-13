@@ -484,18 +484,35 @@ flex-basis: 40%;
 }
 
 .name a{
-    color: var(--color-pink);
+    color: var(--color-blue);
 }
-
-
-
 
 /* Contact */
 
 #Contact {
-    background-color: var(--color-blue);
+    background-color: var(--color-dark-blue);
+    margin:24px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding:28px;
 }
 
-.section >{
+
+
+#Contact.section > *{
     color:var(--color-white);
+    margin:12px 8px;
 }
+
+#Contact.section i{
+    font-size: 36px;
+    margin:8px 6px;
+}
+
+.contact__links i:hover{
+    transform:scale(1.1);
+    color: var(--color-dark-pink);
+    transition:all var(--animation-duration) ease-in;
+}
+
