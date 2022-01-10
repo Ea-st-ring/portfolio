@@ -563,3 +563,21 @@ body {
         height: 80px;
     }
 }
+
+.upBtn {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    display: flex;
+    justify-content: flex-end;
+    color: var(--color-blue);
+    font-size: 40px;
+    transition: opacity 300ms ease-in;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.upBtn.active {
+    opacity: 1;
+    pointer-events: visible;
+}

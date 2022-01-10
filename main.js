@@ -40,13 +40,26 @@ const homeHeight = home.getBoundingClientRect().height;
 console.log(homeHeight);
 document.addEventListener('scroll', () => {
     home.style.opacity = 1 - window.scrollY / homeHeight;
+});
+
+
+// Show arrow up button when scrolling down
+
+const upBtn = document.querySelector('.upBtn');
+document.addEventListener('scroll', () => {
+    if (window.scrollY > homeHeight / 2) {
+        upBtn.classList.add('active');
+        upBtn.style.opacity = 1;
+    } else {
+        upBtn.classList.remove('active');
+        upBtn.style.opacity = 0;
+    }
+});
+
+upBtn.addEventListener('click', () => {
+    setTimeout(BtnCall, 1.0 * 1000); // 해결해야함....
+
 })
-
-
-
-
-
-
 
 
 
