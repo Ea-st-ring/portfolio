@@ -57,9 +57,12 @@ document.addEventListener('scroll', () => {
 });
 
 upBtn.addEventListener('click', () => {
-    setTimeout(BtnCall, 1.0 * 1000); // 해결해야함....
+    setTimeout(() => { scrollIntoView('#home') }, 250);
 
-})
+
+
+
+});
 
 
 
