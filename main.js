@@ -14,14 +14,34 @@ document.addEventListener('scroll', () => {
 
 // Handle scrolling when tapping on the navbar menu
 const navbarMenu = document.querySelector('.navbar__menu');
+const navbarMenuItems = document.querySelectorAll(".navbar__menu__item");
+console.log(navbarMenuItems[1].dataset.link);
 navbarMenu.addEventListener('click', (event) => {
     const target = event.target;
     const link = target.dataset.link;
+
     if (link == null) {
         return;
     } // navbar에 undefined 가 뜨는 부분을 없애주는 작업
     scrollIntoView(link);
+
+    navbarMenuItems.forEach((element) => {
+            if (link === element.dataset.link) {
+                element.classList.add('active');
+            } else {
+                element.classList.remove('active');
+            }
+        }) // focus on button
+
+    // 스크롤 시 focus 가 넘어가는 것 만들기!!
+
 });
+
+// navbar Menu Click
+
+
+
+
 
 
 // Handle click on Contact me button on home
@@ -76,6 +96,25 @@ clickProject(3);
 const projects = document.querySelectorAll(".project");
 const projectContainer = document.querySelector(".work__projects");
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// functions
 
 function viewProject(number, name) {
     let i = 0;
