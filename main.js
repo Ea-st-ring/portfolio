@@ -58,17 +58,41 @@ document.addEventListener('scroll', () => {
 
 upBtn.addEventListener('click', () => {
     setTimeout(() => { scrollIntoView('#home') }, 250);
-
-
-
-
 });
 
 
 
+// project button
+
+const categoryBtn = document.querySelectorAll(".category__btn");
 
 
+clickProject(0);
+clickProject(1);
+clickProject(2);
+clickProject(3);
 
+
+const projects = document.querySelectorAll(".project");
+const projectContainer = document.querySelector(".work__projects");
+
+
+function viewProject(number, name) {
+    let i = 0;
+    let j = 0;
+    for (i = 0; i < 8; i++) {
+
+        if (name == "all") {
+            for (j = 0; j < 8; j++) {
+                projects[j].style.display = 'block';
+            }
+        } else if (name != projects[i].dataset.category) {
+            projects[i].style.display = "none";
+        } else if (name == projects[i].dataset.category) {
+            projects[i].style.display = "block";
+        }
+    }
+};
 
 
 
@@ -76,3 +100,26 @@ function scrollIntoView(selector) {
     const scrollTo = document.querySelector(selector);
     scrollTo.scrollIntoView({ behavior: "smooth" });
 }
+
+
+function clickProject(number) {
+    categoryBtn[number].addEventListener('click', (event) => {
+        projectContainer.classList.add('anim-out');
+        setTimeout(() => {
+            projectContainer.classList.remove('anim-out');
+
+
+            let i = 0;
+            const target = event.target;
+            const categoryname = target.dataset.category || target.parentNode.dataset.category;
+            // dataset 안에 category 가 없으면 parentNode 에서 접근!!
+            categoryBtn[number].classList.add('active');
+            for (i = 0; i < 4; i++) {
+                if (i != number) {
+                    categoryBtn[i].classList.remove('active');
+                }
+            }
+            viewProject(number, categoryname);
+        }, 300); // 제거하지 않을 경우 anim-out 이 계속 실행되어 opacity를 0으로 만듦
+    })
+};

@@ -366,6 +366,13 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    transition: all var(--animation-duration) ease-out;
+}
+
+.work__projects.anim-out {
+    opacity: 0;
+    transform: scale(0.96) translateY(40px);
+    transition: all var(--animation-duration) ease-in;
 }
 
 .project {
@@ -377,6 +384,8 @@ body {
     background-color: var(--color-light-white);
     align-items: center;
     justify-content: center;
+    transition: all var(--animation-duration) ease-in;
+    transform: translateY(10px);
 }
 
 .project__img {
@@ -397,7 +406,7 @@ body {
     color: var(--color-light-white);
     opacity: 0;
     transform: translateY(10px);
-    transition: all var(--animation-duration) ease-in;
+    transition: opacity 300ms ease-in;
 }
 
 .project:hover .project__description {
