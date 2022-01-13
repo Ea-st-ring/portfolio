@@ -448,8 +448,8 @@ body {
 #Testimonials {
     background-color: var(--color-light-white);
     padding: 0px;
-    margin-left: 18px;
-    margin-right: 18px;
+    margin-left: 0px;
+    margin-right: 0px;
     padding-top: 50px;
     padding-bottom: 50px;
 }
@@ -526,11 +526,12 @@ body {
 
 #Contact {
     background-color: var(--color-dark-blue);
-    margin: 24px 24px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 28px;
+    margin-left: 0px;
+    margin-right: 0px;
 }
 
 #Contact.section>* {
