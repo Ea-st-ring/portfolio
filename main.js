@@ -23,6 +23,7 @@ navbarMenu.addEventListener('click', (event) => {
     if (link == null) {
         return;
     } // navbar에 undefined 가 뜨는 부분을 없애주는 작업
+    navbarMenu.classList.remove('active');
     scrollIntoView(link);
 
     navbarMenuItems.forEach((element) => {
@@ -37,7 +38,53 @@ navbarMenu.addEventListener('click', (event) => {
 
 });
 
-// navbar Menu Click
+// navbar Menu Scroll
+const home = document.querySelector('.home__container');
+const homeHeight = home.getBoundingClientRect().height;
+
+// const about = document.querySelector('#about');
+// const skills = document.querySelector('#skills');
+// const myWork = document.querySelector('#MyWork');
+// const testimonials = document.querySelector('#Testimonials');
+// const contact = document.querySelector('#Contact');
+
+// const aboutHeight = about.getBoundingClientRect().height;
+// const skillsHeight = skills.getBoundingClientRect().height;
+// const myWorkHeight = myWork.getBoundingClientRect().height;
+// const testiHeight = testimonials.getBoundingClientRect().height;
+// const contactHeight = contact.getBoundingClientRect().height;
+
+// const Heights = [homeHeight, aboutHeight, skillsHeight, myWorkHeight, testiHeight, contactHeight];
+
+// Heights[1] += homeHeight;
+// Heights[2] += Heights[1];
+// Heights[3] += Heights[2];
+// Heights[4] += Heights[3];
+// Heights[5] += Heights[4];
+// console.log(Heights);
+// console.log(window.scrollY);
+
+
+// function scrollFocus(heightY, number) {
+//     document.addEventListener('scroll', () => {
+//         navbarMenuItems.forEach((element) => {
+//             if (number > 0) {
+//                 if (navbarMenuItems[number - 1] < window.scrollY || window.scrollY < heightY) {
+//                     navbarMenuItems[number].classList.add('active');
+//                 } else {
+//                     element.classList.remove('active');
+//                 }
+//             } else { navbarMenuItems[0].classList.add('active'); }
+
+//         });
+//     })
+// };
+
+// scrollFocus(aboutHeight, 1);
+// scrollFocus(skillsHeight, 2);
+// scrollFocus(myWorkHeight, 3);
+// scrollFocus(testiHeight, 4);
+// scrollFocus(contactHeight, 5);
 
 
 
@@ -55,8 +102,6 @@ contactBtn.addEventListener('click', () => {
 
 
 // TransparentHome as scrolling
-const home = document.querySelector('.home__container');
-const homeHeight = home.getBoundingClientRect().height;
 console.log(homeHeight);
 document.addEventListener('scroll', () => {
     home.style.opacity = 1 - window.scrollY / homeHeight;
@@ -97,6 +142,23 @@ const projects = document.querySelectorAll(".project");
 const projectContainer = document.querySelector(".work__projects");
 
 
+
+
+// toggle button
+console.log(navbarMenu.classList);
+const toggleBtn = document.querySelector('.navbar__toggle-btn');
+
+
+toggleBtn.addEventListener('click', () => {
+    const activeCondition = !navbarMenu.classList.contains('active');
+    const navbardark = navbar.classList.contains('navbar--dark');
+    console.log(navbardark);
+    if (activeCondition) {
+        navbarMenu.classList.add('active');
+    } else {
+        navbarMenu.classList.remove('active');
+    }
+});
 
 
 

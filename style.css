@@ -10,6 +10,7 @@
     --color-light-grey: #7c7979;
     --color-blue: #73aace;
     --color-dark-blue: #4263a1;
+    --color-realdark-blue: #2340c2;
     --color-yellow: #fff7d1;
     --color-orange: #feb546;
     --color-black: #000000;
@@ -27,6 +28,10 @@
     --animation-duration: 300ms;
     /* size */
     --size-border-radius: 4px;
+}
+
+body {
+    margin: 0;
 }
 
 
@@ -60,7 +65,7 @@ p {
     margin: 4px 0;
 }
 
-.box {
+* {
     box-sizing: border-box;
 }
 
@@ -94,15 +99,15 @@ body {
 #navbar {
     position: fixed;
     width: 100%;
-    height: 7%;
     display: flex;
     justify-content: space-between;
     background-color: transparent;
     align-items: center;
     color: var(--color-white);
     padding: 16px;
-    transition: var(--animation-duration) ease-in-out;
+    transition: all var(--animation-duration) ease-in-out;
     z-index: 1;
+    /* 레이어를 맨 위로 */
 }
 
 #navbar.navbar--dark {
@@ -113,18 +118,17 @@ body {
 .navbar__logo {
     font-size: var(--font-medium);
     font-weight: var(--weight-semi-bold);
-    padding-left: 20px;
 }
 
 .navbar__menu {
     display: flex;
-    padding-right: 20px;
 }
 
 .navbar__menu__item {
     padding: 8px 12px;
     margin: 0 4px;
     cursor: pointer;
+    border: 1px solid transparent;
     border-radius: var(--size-border-radius);
 }
 
@@ -142,7 +146,7 @@ body {
 .navbar__toggle-btn {
     position: absolute;
     right: 32px;
-    top: 20px;
+    top: 24px;
     font-size: 24px;
     color: var(--color-white);
     display: none;
@@ -178,6 +182,12 @@ body {
     border: 2px solid var(--color-white);
     border-radius: var(--size-border-radius);
     color: var(--color-white);
+}
+
+.profile__contactBtn:hover {
+    border: 2px solid var(--color-white);
+    border-radius: var(--size-border-radius);
+    background-color: var(--color-realdark-blue);
 }
 
 
@@ -417,17 +427,17 @@ body {
 }
 
 .project__description h3 {
-    color: var(--color-light-white);
+    color: yellow;
 }
 
 .project__description h3:after {
     content: '';
     display: block;
     position: relative;
-    left: 50%;
+    left: 45%;
     margin-left: -12px;
     margin-top: 8px;
-    width: 25px;
+    width: 50px;
     height: 2px;
     background-color: var(--color-dark-white);
 }
@@ -549,12 +559,22 @@ body {
     #navbar {
         flex-direction: column;
         align-items: flex-start;
+        background-color: var(--color-dark-blue);
     }
     .navbar__menu {
         flex-direction: column;
         text-align: center;
         width: 100%;
         display: none;
+    }
+    .navbar__menu.active {
+        display: block;
+        background-color: var(--color-dark-blue);
+        width: 100%;
+        position: relative;
+    }
+    #navbar.navbar--dark {
+        padding: 16px;
     }
     .about__major {
         flex-direction: column;
