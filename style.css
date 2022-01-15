@@ -87,6 +87,7 @@ button {
     cursor: pointer;
     border: none;
     outline: none;
+    padding: 0;
 }
 
 body {
@@ -212,11 +213,13 @@ body {
 .about__major {
     display: flex;
     justify-content: space-between;
-    margin: 80px 0;
+    margin-top: 30px;
+    margin-bottom: 0px;
 }
 
 .major {
     max-width: 240.5px;
+    margin-bottom: 15px;
 }
 
 .major__icon {
@@ -345,6 +348,7 @@ body {
     border-radius: var(--size-border-radius);
     font-size: var(--font-regular);
     padding: 8px 48px;
+    position: relative;
 }
 
 .category__btn.active,
@@ -367,9 +371,9 @@ body {
     height: 24px;
     display: inline-block;
     line-height: 24px;
-    position: relative;
+    position: absolute;
     top: -2px;
-    left: 4px;
+    right: 16px;
     opacity: 0;
     transition: all var(--animation-duration) ease-in;
 }
@@ -554,8 +558,19 @@ body {
 /* For below 768px screen width */
 
 @media screen and (max-width:768px) {
+    :root {
+        /* Font size */
+        --font-large: 36px;
+        --font-medium: 24px;
+        --font-regular: 16px;
+        --font-small: 14px;
+        --font-micro: 10px;
+    }
     .navbar__toggle-btn {
         display: block;
+        top: 20px;
+        right: 16px;
+        font-size: 20px;
     }
     #navbar {
         flex-direction: column;
@@ -584,26 +599,47 @@ body {
     .major__description {
         margin-bottom: 38px;
     }
+    .category__btn {
+        margin: 4px 0;
+        width: 100%;
+    }
+    .category__count {
+        position: absolute;
+    }
     .skillset {
         flex-direction: column;
     }
     .project {
         flex-grow: 1;
     }
+    #Testimonials {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    .testimonial__bubble1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .testimonial__bubble2 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
     .testimonials img {
-        width: 80px;
-        height: 80px;
+        width: 120px;
+        height: 120px;
     }
 }
 
 .upBtn {
     position: fixed;
     bottom: 50px;
-    right: 50px;
+    right: 20px;
     display: flex;
     justify-content: flex-end;
     color: var(--color-blue);
-    font-size: 40px;
+    font-size: 50px;
     transition: opacity 300ms ease-in;
     pointer-events: none;
     opacity: 0;
