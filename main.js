@@ -2,7 +2,6 @@
 
 const navbar = document.querySelector('#navbar');
 const navbarHeight = navbar.getBoundingClientRect().height;
-console.log(navbarHeight);
 document.addEventListener('scroll', () => {
     if (window.scrollY > navbarHeight) {
         navbar.classList.add('navbar--dark');
@@ -15,7 +14,6 @@ document.addEventListener('scroll', () => {
 // Handle scrolling when tapping on the navbar menu
 const navbarMenu = document.querySelector('.navbar__menu');
 const navbarMenuItems = document.querySelectorAll(".navbar__menu__item");
-console.log(navbarMenuItems[1].dataset.link);
 navbarMenu.addEventListener('click', (event) => {
     const target = event.target;
     const link = target.dataset.link;
@@ -26,6 +24,8 @@ navbarMenu.addEventListener('click', (event) => {
     navbarMenu.classList.remove('active');
     scrollIntoView(link);
 
+    // Focus on Button when we click
+
     navbarMenuItems.forEach((element) => {
             if (link === element.dataset.link) {
                 element.classList.add('active');
@@ -33,60 +33,81 @@ navbarMenu.addEventListener('click', (event) => {
                 element.classList.remove('active');
             }
         }) // focus on button
-
-    // 스크롤 시 focus 가 넘어가는 것 만들기!!
-
 });
 
-// navbar Menu Scroll
-const home = document.querySelector('.home__container');
-const homeHeight = home.getBoundingClientRect().height;
+// 1. 모든 섹션 요소를 가져옴
+// 2. IntersectionObserver 를 이용해 모든 섹션 관찰
+// 3. 보여지는 섹션의 메뉴 아이템 활성화
 
-// const about = document.querySelector('#about');
-// const skills = document.querySelector('#skills');
-// const myWork = document.querySelector('#MyWork');
-// const testimonials = document.querySelector('#Testimonials');
-// const contact = document.querySelector('#Contact');
+// Focus on button when we scroll
 
-// const aboutHeight = about.getBoundingClientRect().height;
-// const skillsHeight = skills.getBoundingClientRect().height;
-// const myWorkHeight = myWork.getBoundingClientRect().height;
-// const testiHeight = testimonials.getBoundingClientRect().height;
-// const contactHeight = contact.getBoundingClientRect().height;
+const sectionIds = [
+    '#home',
+    '#about',
+    '#skills',
+    '#work',
+    '#testimonials',
+    '#contact'
+];
 
-// const Heights = [homeHeight, aboutHeight, skillsHeight, myWorkHeight, testiHeight, contactHeight];
+const sections = sectionIds.map(id => document.querySelector(id));
+const navItems = sectionIds.map(id =>
+    document.querySelector(`[data-link="${id}"]`));
 
-// Heights[1] += homeHeight;
-// Heights[2] += Heights[1];
-// Heights[3] += Heights[2];
-// Heights[4] += Heights[3];
-// Heights[5] += Heights[4];
-// console.log(Heights);
-// console.log(window.scrollY);
+let selectedNavIndex = 0;
+let selectedNavItem = navItems[0];
 
-
-// function scrollFocus(heightY, number) {
-//     document.addEventListener('scroll', () => {
-//         navbarMenuItems.forEach((element) => {
-//             if (number > 0) {
-//                 if (navbarMenuItems[number - 1] < window.scrollY || window.scrollY < heightY) {
-//                     navbarMenuItems[number].classList.add('active');
-//                 } else {
-//                     element.classList.remove('active');
-//                 }
-//             } else { navbarMenuItems[0].classList.add('active'); }
-
-//         });
-//     })
-// };
-
-// scrollFocus(aboutHeight, 1);
-// scrollFocus(skillsHeight, 2);
-// scrollFocus(myWorkHeight, 3);
-// scrollFocus(testiHeight, 4);
-// scrollFocus(contactHeight, 5);
+const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.3,
+};
 
 
+console.log(navItems[3].dataset.link);
+
+const observerCallback = (entries, observer) => {
+    entries.forEach((entry) => {
+        if (!entry.isIntersecting && entry.intersectionRatio > 0) {
+            const index = sectionIds.indexOf(`#${entry.target.id}`);
+            // 스크롤링이 아래로 되어 페이지가 올라옴
+            if (entry.boundingClientRect.y < 0) {
+                selectedNavIndex = index + 1;
+            } else {
+                selectedNavIndex = index - 1;
+            }
+        }
+    });
+};
+
+console.log(document.body.clientWidth);
+
+const observer = new IntersectionObserver(observerCallback, observerOptions);
+sections.forEach(section => observer.observe(section));
+
+window.addEventListener('resize', () => {
+    if (document.body.clientWidth < 760) {
+        sections.forEach(section => observer.unobserve(section));
+    } else {
+        sections.forEach(section => observer.observe(section));
+    }
+}); // 일정 픽셀 이하에서 Scroll focus 관련하여 오류가 있기 때문에 비활성화
+
+
+
+window.addEventListener('wheel', () => { // wheel 은 마우스
+    if (document.body.clientWidth > 760) {
+        if (window.scrollY === 0) {
+            selectedNavIndex = 0;
+        } else if (
+            Math.round(window.scrollY + window.innerHeight) >=
+            document.body.clientHeight) {
+            selectedNavIndex = navItems.length - 1;
+        }
+        selectNavItem(navItems[selectedNavIndex]);
+        // select home and contact when page's top & down 
+    }
+});
 
 
 
@@ -94,7 +115,7 @@ const homeHeight = home.getBoundingClientRect().height;
 // Handle click on Contact me button on home
 const contactBtn = document.querySelector('.profile__contactBtn');
 contactBtn.addEventListener('click', () => {
-    scrollIntoView('#Contact');
+    scrollIntoView('#contact');
 });
 
 
@@ -102,7 +123,8 @@ contactBtn.addEventListener('click', () => {
 
 
 // TransparentHome as scrolling
-console.log(homeHeight);
+const home = document.querySelector('.home__container');
+const homeHeight = home.getBoundingClientRect().height;
 document.addEventListener('scroll', () => {
     home.style.opacity = 1 - window.scrollY / homeHeight;
 });
@@ -145,21 +167,20 @@ const projectContainer = document.querySelector(".work__projects");
 
 
 // toggle button
-console.log(navbarMenu.classList);
 const toggleBtn = document.querySelector('.navbar__toggle-btn');
-
 
 toggleBtn.addEventListener('click', () => {
     const activeCondition = !navbarMenu.classList.contains('active');
     const navbardark = navbar.classList.contains('navbar--dark');
-    console.log(navbardark);
     if (activeCondition) {
         navbarMenu.classList.add('active');
+        navbarMenuItems.forEach((element) => {
+            element.classList.remove('active');
+        });
     } else {
         navbarMenu.classList.remove('active');
     }
 });
-
 
 
 
@@ -200,6 +221,7 @@ function viewProject(number, name) {
 function scrollIntoView(selector) {
     const scrollTo = document.querySelector(selector);
     scrollTo.scrollIntoView({ behavior: "smooth" });
+    selectNavItem(navItems[sectionIds.indexOf(selector)]);
 }
 
 
@@ -224,3 +246,11 @@ function clickProject(number) {
         }, 300); // 제거하지 않을 경우 anim-out 이 계속 실행되어 opacity를 0으로 만듦
     })
 };
+
+
+
+function selectNavItem(selected) {
+    selectedNavItem.classList.remove('active');
+    selectedNavItem = selected;
+    selectedNavItem.classList.add('active');
+}

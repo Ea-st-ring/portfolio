@@ -449,7 +449,7 @@ body {
 
 /* Testimonials */
 
-#Testimonials {
+#testimonials {
     background-color: var(--color-light-white);
     padding: 0px;
     margin-left: 0px;
@@ -458,17 +458,17 @@ body {
     padding-bottom: 50px;
 }
 
-#Testimonials .section {
+#testimonials .section {
     width: 100%;
     height: auto;
 }
 
-#Testimonials h1 {
+#testimonials h1 {
     position: relative;
     top: 24px;
 }
 
-#Testimonials h3 {
+#testimonials h3 {
     position: relative;
     top: 24px;
     font-weight: var(--weight-semi-bold);
@@ -528,7 +528,7 @@ body {
 
 /* Contact */
 
-#Contact {
+#contact {
     background-color: var(--color-dark-blue);
     display: flex;
     flex-direction: column;
@@ -538,12 +538,12 @@ body {
     margin-right: 0px;
 }
 
-#Contact.section>* {
+#contact.section>* {
     color: var(--color-white);
     margin: 12px 8px;
 }
 
-#Contact.section i {
+#contact.section i {
     font-size: 36px;
     margin: 8px 6px;
 }
@@ -558,7 +558,7 @@ body {
 /* For below 768px screen width */
 
 @media screen and (max-width:768px) {
-    :root {
+     :root {
         /* Font size */
         --font-large: 36px;
         --font-medium: 24px;
@@ -635,7 +635,7 @@ body {
 .upBtn {
     position: fixed;
     bottom: 50px;
-    right: 20px;
+    right: 30px;
     display: flex;
     justify-content: flex-end;
     color: var(--color-blue);
