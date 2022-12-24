@@ -158,11 +158,12 @@ const categoryBtn = document.querySelectorAll(".category__btn");
 clickProject(0);
 clickProject(1);
 clickProject(2);
-clickProject(3);
+
 
 
 const projects = document.querySelectorAll(".project");
 const projectContainer = document.querySelector(".work__projects");
+console.log(projectContainer);
 
 
 
@@ -203,10 +204,10 @@ toggleBtn.addEventListener('click', () => {
 function viewProject(number, name) {
     let i = 0;
     let j = 0;
-    for (i = 0; i < 8; i++) {
+    for (i = 0; i < 4; i++) {
 
         if (name == "all") {
-            for (j = 0; j < 8; j++) {
+            for (j = 0; j < 4; j++) {
                 projects[j].style.display = 'block';
             }
         } else if (name != projects[i].dataset.category) {
@@ -237,8 +238,9 @@ function clickProject(number) {
             const target = event.target;
             const categoryname = target.dataset.category || target.parentNode.dataset.category;
             // dataset 안에 category 가 없으면 parentNode 에서 접근!!
+            console.log(categoryname);
             categoryBtn[number].classList.add('active');
-            for (i = 0; i < 4; i++) {
+            for (i = 0; i < 3; i++) {
                 if (i != number) {
                     categoryBtn[i].classList.remove('active');
                 }
