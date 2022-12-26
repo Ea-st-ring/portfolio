@@ -8,7 +8,7 @@
     --color-dark-grey: #4d4d4d;
     --color-grey: #616161;
     --color-light-grey: #7c7979;
-    --color-blue: #73aace;
+    --color-blue: #1D73DF;;
     --color-dark-blue: #4263a1;
     --color-realdark-blue: #2340c2;
     --color-yellow: #fff7d1;
@@ -30,14 +30,52 @@
     --size-border-radius: 4px;
 }
 
+
+
 body {
     margin: 0;
+
 }
 
 
 /* Typography */
 
+@font-face {
+    font-family: 'GmarketSans';
+    font-weight: 300;
+    font-style: normal;
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSansLight.eot');
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSansLight.eot?#iefix') format('embedded-opentype'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSansLight.woff2') format('woff2'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSansLight.woff') format('woff'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSansLight.ttf') format("truetype");
+    font-display: swap;
+} 
+@font-face {
+    font-family: 'GmarketSans';
+    font-weight: 500;
+    font-style: normal;
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSansMedium.eot');
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSansMedium.eot?#iefix') format('embedded-opentype'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSansMedium.woff2') format('woff2'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSansMedium.woff') format('woff'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSansMedium.ttf') format("truetype");
+    font-display: swap;
+} 
+@font-face {
+    font-family: 'GmarketSans';
+    font-weight: 700;
+    font-style: normal;
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSansBold.eot');
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSansBold.eot?#iefix') format('embedded-opentype'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSansBold.woff2') format('woff2'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSansBold.woff') format('woff'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSansBold.ttf') format("truetype");
+    font-display: swap;
+} 
+
 h1 {
+    
     font-size: var(--font-large);
     font-weight: var(--weight-bold);
     color: var(--color-black);
@@ -45,7 +83,7 @@ h1 {
 }
 
 h2 {
-    font-size: var(--font-medium);
+    font-size: var(--font-regular);
     font-weight: var(--weight-semi-bold);
     color: var(--color-black);
     margin: 8px 0;
@@ -66,6 +104,7 @@ p {
 }
 
 * {
+    font-family: 'GmarketSans';
     box-sizing: border-box;
 }
 
@@ -112,7 +151,7 @@ body {
 }
 
 #navbar.navbar--dark {
-    background-color: var(--color-dark-blue);
+    background-color: var(--color-blue);
     padding: 8px;
 }
 
@@ -157,7 +196,7 @@ body {
 /* Home */
 
 #home {
-    background: url(imgs/home-background.png) center/cover no-repeat;
+    background: url(imgs/homeground2.png) center/cover no-repeat;
     padding: 40px;
     text-align: center;
     padding-top: 120px;
@@ -170,8 +209,12 @@ body {
     border: 2px solid var(--color-light-white);
 }
 
-.profile__greet,
-.profile__description {
+.profile__greet{
+    margin-top : 42px;
+    color: var(--color-white);
+}
+
+.profile__description{
     color: var(--color-white);
 }
 
@@ -188,7 +231,7 @@ body {
 .profile__contactBtn:hover {
     border: 2px solid var(--color-white);
     border-radius: var(--size-border-radius);
-    background-color: var(--color-realdark-blue);
+    background-color: rgb(21, 200, 249)
 }
 
 
@@ -210,6 +253,10 @@ body {
 
 /* About */
 
+.about_description{
+    line-height: 40px;
+}
+
 .about__major {
     display: flex;
     justify-content: space-between;
@@ -218,26 +265,35 @@ body {
 }
 
 .major {
-    max-width: 240.5px;
+    max-width: 225.5px;
     margin-bottom: 15px;
 }
 
 .major__icon {
     width: 170px;
     height: 170px;
-    font-size: 70px;
-    line-height: 170px;
+    font-size: 60px;
+    line-height: 180px;
     margin: auto;
     border: 1px solid var(--color-blue);
     border-radius: 50%;
     color: var(--color-blue);
-    margin-bottom: 16px;
+    margin-bottom: 25px;
 }
 
 .major__icon:hover i {
     color: var(--color-pink);
-    transform: rotate(-30deg) scale(1.1);
+    transform: rotate(-360deg) scale(1.1);
 }
+
+.major__icon:hover i.fa-js-square{
+    color: #FFC107;
+}
+
+.major__icon:hover i.fa-android{
+    color: #03C85A;
+}
+
 
 .major__icon i {
     transition: all var(--animation-duration) ease;
@@ -248,8 +304,22 @@ body {
     color: var(--color-dark-grey);
 }
 
+.major__title1{
+    color: #FFC107;
+}
+
+.major__title2{
+    color: #03C85A;
+}
+
+.major__title3{
+    color: var(--color-pink);
+}
+
+
 .major__description {
     font-size: var(--font-small);
+    line-height: 22px;
 }
 
 .job {
@@ -263,7 +333,7 @@ body {
 }
 
 .job__description {
-    margin: 0 16px;
+    margin: 0 20px;
     text-align: left;
 }
 
@@ -281,7 +351,7 @@ body {
 }
 
 #skills {
-    background-color: var(--color-yellow);
+    background-color: #f1f7ff
 }
 
 .skillset {
@@ -328,7 +398,11 @@ body {
 .skill__value {
     width: 70%;
     height: 3px;
-    background-color: var(--color-orange);
+    background-color: rgb(255, 255, 255)
+}
+
+.skill__percent{
+    color:var(--color-light-white)
 }
 
 .tools,
@@ -353,7 +427,7 @@ body {
 
 .category__btn.active,
 .category__btn:hover {
-    background-color: var(--color-pink);
+    background-color: rgb(109, 194, 255);
     color: var(--color-white);
 }
 
@@ -364,13 +438,13 @@ body {
 }
 
 .category__count {
-    background-color: var(--color-orange);
-    border-radius: 50%;
+    background-color: rgb(0, 115, 255);
+    border-radius: 15px;
     color: var(--color-white);
     width: 24px;
     height: 24px;
     display: inline-block;
-    line-height: 24px;
+    line-height: 26px;
     position: absolute;
     top: -2px;
     right: 16px;
@@ -384,6 +458,7 @@ body {
     justify-content: center;
     transition: all var(--animation-duration) ease-out;
 }
+
 
 .work__projects.anim-out {
     opacity: 0;
@@ -407,6 +482,7 @@ body {
 .project__img {
     max-width: 100%;
     max-height: 100%;
+    margin: auto;
 }
 
 .project__description {
@@ -529,7 +605,7 @@ body {
 /* Contact */
 
 #contact {
-    background-color: var(--color-dark-blue);
+    background-color: var(--color-blue);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -558,7 +634,7 @@ body {
 /* For below 768px screen width */
 
 @media screen and (max-width:768px) {
-     :root {
+    :root {
         /* Font size */
         --font-large: 36px;
         --font-medium: 24px;
@@ -575,7 +651,7 @@ body {
     #navbar {
         flex-direction: column;
         align-items: flex-start;
-        background-color: var(--color-dark-blue);
+        background-color: var(--color-blue);
     }
     .navbar__menu {
         flex-direction: column;
@@ -585,12 +661,13 @@ body {
     }
     .navbar__menu.active {
         display: block;
-        background-color: var(--color-dark-blue);
+        background-color: var(--color-blue);
         width: 100%;
         position: relative;
     }
     #navbar.navbar--dark {
         padding: 16px;
+        background-color: var(--color-blue);
     }
     .about__major {
         flex-direction: column;
@@ -638,7 +715,7 @@ body {
     right: 30px;
     display: flex;
     justify-content: flex-end;
-    color: var(--color-blue);
+    color: #0051b3;
     font-size: 50px;
     transition: opacity 300ms ease-in;
     pointer-events: none;

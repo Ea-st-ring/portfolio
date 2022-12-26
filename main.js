@@ -81,8 +81,6 @@ const observerCallback = (entries, observer) => {
     });
 };
 
-console.log(document.body.clientWidth);
-
 const observer = new IntersectionObserver(observerCallback, observerOptions);
 sections.forEach(section => observer.observe(section));
 
@@ -183,8 +181,6 @@ toggleBtn.addEventListener('click', () => {
         navbarMenu.classList.remove('active');
     }
 });
-
-
 
 
 
