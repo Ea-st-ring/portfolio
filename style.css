@@ -398,6 +398,7 @@ body {
 .skill__value {
     width: 70%;
     height: 3px;
+    transition: all 1000ms ease-in-out;
     background-color: rgb(255, 255, 255)
 }
 

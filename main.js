@@ -84,6 +84,23 @@ const observerCallback = (entries, observer) => {
 const observer = new IntersectionObserver(observerCallback, observerOptions);
 sections.forEach(section => observer.observe(section));
 
+let values = document.querySelectorAll('.skill__value'); // skill-bar 애니메이션 이벤트
+const observer2 = new IntersectionObserver((e)=>{
+    e.forEach((div =>{
+        if(div.isIntersecting){
+            values.forEach((target)=>{          
+                target.style.width = target.dataset.value; 
+            });
+        } else {
+        values.forEach((target)=>{
+            target.style.width = "0%";
+        });
+    } 
+    }));
+    },observerOptions);
+
+observer2.observe(sections[2].childNodes[1]);
+
 window.addEventListener('resize', () => {
     if (document.body.clientWidth < 760) {
         sections.forEach(section => observer.unobserve(section));
