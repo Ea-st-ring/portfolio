@@ -74,6 +74,7 @@ body {
     font-display: swap;
 } 
 
+
 h1 {
     
     font-size: var(--font-large);
@@ -195,11 +196,60 @@ body {
 
 /* Home */
 
+@keyframes Gradient {
+    /* from {
+    opacity: 0;
+    }
+    to {
+    opacity: 1;
+    } */
+    0% {
+        transform: translateY(-100px); 
+        opacity: 0; 
+    }
+    50%{
+        filter:saturate(111%) brightness(120%);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0px);  
+        opacity: 1;
+    }
+}
+
 #home {
-    background: url(imgs/homeground2.png) center/cover no-repeat;
+    /* background: url(imgs/homeground2.png) center/cover no-repeat; */
     padding: 40px;
     text-align: center;
     padding-top: 120px;
+    height: 700px;
+}
+
+.home_background_img {
+    position: absolute;
+    animation:Gradient 2000ms;
+    width: 100%;
+    display: block;
+    max-height: 650px;
+    object-fit: cover;
+    top:0;
+    left:0;
+    z-index: -1;
+}
+
+@keyframes profile_anim{
+    0%{
+        transform: scale(1.0);
+        opacity: 1;
+    }
+    50%{
+        transform: scale(1.1);
+        opacity: 1;
+    }
+    100%{
+        transform: scale(1.0);
+        
+    }
 }
 
 .profile__img {
@@ -207,6 +257,7 @@ body {
     height: 250px;
     border-radius: 50%;
     border: 2px solid var(--color-light-white);
+    animation: profile_anim 500ms;
 }
 
 .profile__greet{
@@ -634,7 +685,7 @@ body {
 
 /* For below 768px screen width */
 
-@media screen and (max-width:768px) {
+@media screen and (max-width:1068px) {
     :root {
         /* Font size */
         --font-large: 36px;
@@ -643,6 +694,22 @@ body {
         --font-small: 14px;
         --font-micro: 10px;
     }
+
+    #home{
+        max-height: 600px;
+        height: 600px;
+    }
+
+    .home_background_img {
+        position: absolute;
+        width: 100%;
+        height: 700px;
+        max-height: 700px;
+        top:0;
+        left:0;
+        z-index: -1;
+    }
+
     .navbar__toggle-btn {
         display: block;
         top: 20px;
