@@ -65,8 +65,6 @@ const observerOptions = {
 };
 
 
-console.log(navItems[3].dataset.link);
-
 const observerCallback = (entries, observer) => {
     entries.forEach((entry) => {
         if (!entry.isIntersecting && entry.intersectionRatio > 0) {
@@ -178,9 +176,6 @@ clickProject(2);
 
 const projects = document.querySelectorAll(".project");
 const projectContainer = document.querySelector(".work__projects");
-console.log(projectContainer);
-
-
 
 
 // toggle button
@@ -198,11 +193,6 @@ toggleBtn.addEventListener('click', () => {
         navbarMenu.classList.remove('active');
     }
 });
-
-
-
-
-
 
 
 
@@ -251,7 +241,6 @@ function clickProject(number) {
             const target = event.target;
             const categoryname = target.dataset.category || target.parentNode.dataset.category;
             // dataset 안에 category 가 없으면 parentNode 에서 접근!!
-            console.log(categoryname);
             categoryBtn[number].classList.add('active');
             for (i = 0; i < 3; i++) {
                 if (i != number) {
