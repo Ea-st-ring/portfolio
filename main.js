@@ -191,14 +191,36 @@ toggleBtn.addEventListener('click', () => {
         });
     } else {
         navbarMenu.classList.remove('active');
-    }
+    } 
+});
+const profileImg = document.querySelector('.profile__img');
+
+window.addEventListener('load',()=>{
+    setTimeout(() => {
+        profileImg.classList.add('active');
+    },2000);
 });
 
+// let windowWidth = window.matchMedia('screen and (max-width:768px)');
+// projectContainer.addEventListener('click',(e)=>{
+    
+//     if(windowWidth.matches){
+//         activeCheck(e);
+//     }
+// });
 
 
-
-
-
+// function activeCheck(item){
+//     if(item.target.attributes.active){
+//         item.target.classList.remove('after');
+//         item.target.removeAttribute('active');
+        
+//     } else{
+//         item.preventDefault();
+//         item.target.classList.add('after');
+//         item.target.setAttribute('active','true');
+//     }
+// }
 
 
 

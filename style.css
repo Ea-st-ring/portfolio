@@ -198,7 +198,7 @@ body {
 
 @keyframes Gradient {
     0% {
-        transform: translateY(-100px); 
+        transform: translateY(-900px); 
         opacity: 0; 
     }
     50%{
@@ -221,7 +221,7 @@ body {
 
 .home_background_img {
     position: absolute;
-    animation:Gradient 2000ms;
+    animation:Gradient 1000ms;
     width: 100%;
     display: block;
     max-height: 650px;
@@ -231,18 +231,26 @@ body {
     z-index: -1;
 }
 
+@keyframes home_anim{
+    0%{
+        transform: translateX(500px);;
+    }
+    100%{
+
+        transform: translateX(0px);;
+        
+    }
+}
+
 @keyframes profile_anim{
     0%{
         transform: scale(1.0);
-        opacity: 1;
     }
     50%{
         transform: scale(1.1);
-        opacity: 1;
     }
     100%{
         transform: scale(1.0);
-        
     }
 }
 
@@ -251,16 +259,23 @@ body {
     height: 250px;
     border-radius: 50%;
     border: 2px solid var(--color-light-white);
-    animation: profile_anim 500ms;
+    animation: home_anim 1500ms;
 }
+
+.profile__img.active{
+    animation: profile_anim 1000ms;
+}
+
 
 .profile__greet{
     margin-top : 42px;
     color: var(--color-white);
+    animation: home_anim 2000ms;
 }
 
 .profile__description{
     color: var(--color-white);
+    animation: home_anim 2500ms;
 }
 
 .profile__contactBtn {
@@ -271,6 +286,7 @@ body {
     border: 2px solid var(--color-white);
     border-radius: var(--size-border-radius);
     color: var(--color-white);
+    animation: home_anim 3000ms;
 }
 
 .profile__contactBtn:hover {
@@ -696,7 +712,7 @@ body {
 }
 
 
-/* For below 768px screen width */
+/* For below 1068px screen width */
 
 @media screen and (max-width:1068px) {
     :root {
@@ -763,7 +779,9 @@ body {
     }
     .category__count {
         position: absolute;
-    }
+    transition: all var(--animation-duration) ease-in;
+    animation: none;
+}
     .skillset {
         flex-direction: column;
     }
