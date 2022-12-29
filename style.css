@@ -739,6 +739,28 @@ body {
         z-index: -1;
     }
 
+    .profile__img {
+        animation: none;
+    }
+    
+    .profile__img.active{
+        animation: none;
+    }
+    
+    
+    .profile__greet{
+        animation: none;
+    }
+    
+    .profile__description{
+        animation: none;
+    }
+    
+    .profile__contactBtn {
+        
+        animation: none;
+    }
+
     .navbar__toggle-btn {
         display: block;
         top: 20px;
@@ -779,9 +801,13 @@ body {
     }
     .category__count {
         position: absolute;
-    transition: all var(--animation-duration) ease-in;
-    animation: none;
-}
+        top : -20px;
+        transition: all var(--animation-duration) ease-in;
+        animation: none;
+        transform: translateY(-8px);
+    }
+
+
     .skillset {
         flex-direction: column;
     }
