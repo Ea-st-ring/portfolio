@@ -220,7 +220,6 @@ body {
 
 .home_background_img {
     position: absolute;
-    animation:Gradient 1000ms;
     width: 100%;
     display: block;
     max-height: 650px;
@@ -230,51 +229,41 @@ body {
     z-index: -1;
 }
 
-@keyframes home_anim{
+@keyframes contact_anim{
     0%{
-        transform: translateX(500px);;
-    }
-    100%{
-
-        transform: translateX(0px);;
-        
-    }
-}
-
-@keyframes profile_anim{
-    0%{
-        transform: scale(1.0);
+        transform: translateX(200px);
+        opacity: 0;
     }
     50%{
-        transform: scale(1.1);
+        opacity: 0;
     }
     100%{
-        transform: scale(1.0);
+        transform: translateX(0px);
+        opacity: 1;
     }
 }
+
 
 .profile__img {
     width: 250px;
     height: 250px;
     border-radius: 50%;
     border: 2px solid var(--color-light-white);
-    animation: home_anim 1500ms;
+    transition: 0.2s ease-in-out;
 }
 
-.profile__img.active{
-    animation: profile_anim 1000ms;
+.profile__img:hover{
+    transform: scale(1.05);
 }
 
 
 .profile__greet{
     margin-top : 42px;
     color: var(--color-white);
-    animation: home_anim 2000ms;
 }
 
 .profile__description{
     color: var(--color-white);
-    animation: home_anim 2500ms;
 }
 
 .profile__contactBtn {
@@ -285,7 +274,7 @@ body {
     border: 2px solid var(--color-white);
     border-radius: var(--size-border-radius);
     color: var(--color-white);
-    animation: home_anim 3000ms;
+    animation: contact_anim 8s ease;
 }
 
 .profile__contactBtn:hover {
