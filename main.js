@@ -158,7 +158,11 @@ document.addEventListener('scroll', () => {
 });
 
 upBtn.addEventListener('click', () => {
-    setTimeout(() => { scrollIntoView('#home') }, 250);
+    setTimeout(() => { 
+        scrollIntoView('#home');
+        upBtn.style.animation = 'upBtn_anim 1s'; 
+    }, 250);
+    setTimeout(() => { upBtn.style.animation = ''; }, 1000);
 });
 
 
@@ -225,8 +229,8 @@ window.addEventListener('load',()=>{
 const profileGreet = document.querySelector('.profile__greet');
 const profileDesc = document.querySelector('.profile__description');
 
-addChar(profileGreet.attributes.text.value, profileGreet, 700);
-addChar(profileDesc.attributes.text.value, profileDesc, 1500);
+addChar(profileGreet.attributes.text.value, profileGreet, 600);
+addChar(profileDesc.attributes.text.value, profileDesc, 400);
 
 
 // functions
@@ -242,7 +246,7 @@ function addChar(text, target, sec){
     chars.map((char) => {
         setTimeout(() => {
         target.innerHTML += char.char;
-        }, sec + char.key * 50);
+        }, sec + char.key * 60);
     });
 }
 
