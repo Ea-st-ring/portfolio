@@ -222,9 +222,29 @@ window.addEventListener('load',()=>{
 //     }
 // }
 
+const profileGreet = document.querySelector('.profile__greet');
+const profileDesc = document.querySelector('.profile__description');
+
+addChar(profileGreet.attributes.text.value, profileGreet, 700);
+addChar(profileDesc.attributes.text.value, profileDesc, 1500);
 
 
 // functions
+
+function addChar(text, target, sec){
+    let chars = [];
+    for (let i = 0; i < text.length; i++) {
+        chars.push({
+        char: text[i],
+        key: i,
+        });
+    }
+    chars.map((char) => {
+        setTimeout(() => {
+        target.innerHTML += char.char;
+        }, sec + char.key * 50);
+    });
+}
 
 function viewProject(number, name) {
     let i = 0;
